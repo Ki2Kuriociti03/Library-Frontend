@@ -1,5 +1,5 @@
 import {createContext, useContext, useEffect, useState} from "react";
-import {jwtDecode} from "jwt-decode";
+import jwtDecode from "jwt-decode";
 import {useHistory} from "react-router-dom"
 
 const AuthContext = createContext();
@@ -7,17 +7,15 @@ const AuthContext = createContext();
 export default AuthContext
 
 export const AuthProvider = ({ children }) => {
-    const {authTokens, setAuthTokens} = useState(() => {
-        // eslint-disable-next-line no-unused-expressions
+    const [authTokens, setAuthTokens] = useState(() =>
         localStorage.getItem("authTokens")
         ? JSON.parse(localStorage.getItem("authTokens")):null
-    })
+    )
 
-    const [user, setUser] = useState(() => {
-        // eslint-disable-next-line no-unused-expressions
+    const [user, setUser] = useState(() =>
         localStorage.getItem("authTokens")
         ? jwtDecode(localStorage.getItem("authTokens")):null
-    })
+    )
 
     const [loading, setLoading] = useState(true)
 
@@ -27,7 +25,7 @@ export const AuthProvider = ({ children }) => {
         const response= await fetch("http://127.0.0.1:8000/backend_api/token/", {
             method: "POST",
             headers: {
-                "Context-Type": "application/json"
+                "Content-Type": "application/json"
             },
             body: JSON.stringify({
                 email, password
@@ -46,7 +44,6 @@ export const AuthProvider = ({ children }) => {
         } else {
             console.log(response.status);
             console.log("there was a server issue");
-            alert("Something went wrong", response.status)
         }
     }
 
@@ -54,7 +51,7 @@ export const AuthProvider = ({ children }) => {
         const response = await fetch("http://127.0.0.1:8000/backend_api/register/", {
             method: "POST",
             headers:{
-                "Context-type":"application/json"
+                "Content-Type":"application/json"
             },
             body: JSON.stringify({
                 email, username, password, password2
