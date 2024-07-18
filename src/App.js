@@ -9,6 +9,7 @@ import Registerpage from "./views/Registerpage";
 import Loginpage from "./views/Loginpage";
 import Dashboard from "./views/Dashboard";
 import Navbar from "./views/Navbar";
+import Bookpage from "./views/Bookpage";
 
 function App() {
 
@@ -21,7 +22,7 @@ function App() {
                     <Route component={Loginpage} path="/login" />
                     <Route component={Registerpage} path="/register"/>
                     <Route component={Homepage} path="/" exact />
-                    <
+                    <Route component={Bookpage} path="/bookpage/:id"/>
                 </Switch>
             </AuthProvider>
         </Router>

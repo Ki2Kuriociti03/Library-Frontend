@@ -29,15 +29,15 @@ function Navbar() {
                     <div className="collapse navbar-collapse" id="navbarNav">
                         <ul className="navbar-nav">
                             <li className="nav-item">
-                                <Link className="nav-link active" aria-current="page" to="/">Home</Link>
+                                <Link className="nav-link active" aria-current="page" to="/">Каталог</Link>
                             </li>
                             {token === null &&
                                 <>
                                     <li className="nav-item">
-                                        <Link className="nav-link" to="/login">Login</Link>
+                                        <Link className="nav-link" to="/login">Вход</Link>
                                     </li>
                                     <li className="nav-item">
-                                        <Link className="nav-link" to="/register">Register</Link>
+                                        <Link className="nav-link" to="/register">Регистрация</Link>
                                     </li>
                                 </>
                             }
@@ -45,10 +45,10 @@ function Navbar() {
                             {token !== null &&
                                 <>
                                     <li className="nav-item">
-                                        <Link className="nav-link" to="/dashboard">Dashboard</Link>
+                                        <Link className="nav-link" to="/dashboard">Профиль</Link>
                                     </li>
                                     <li className="nav-item">
-                                        <a className="nav-link" onClick={logoutUser} style={{cursor: "pointer"}}>Logout</a>
+                                        <a className="nav-link" onClick={logoutUser} style={{cursor: "pointer"}}>Выход</a>
                                     </li>
                                 </>
                             }

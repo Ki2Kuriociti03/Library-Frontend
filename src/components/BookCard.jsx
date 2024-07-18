@@ -6,7 +6,7 @@ function BookCard({ book }) {
     return (
         <div className='card-container' style={{marginLeft:"40px", marginRight:"40px", marginBottom:"30px"}}>
             <div className='image-container'>
-                <img src={book.image} alt=""/>
+                <img src={`http://127.0.0.1:8000/${book.image}`} alt=""/>
             </div>
             <div className="card-content">
                 <div className="card-title">
@@ -18,7 +18,7 @@ function BookCard({ book }) {
             </div>
             <div className="btn">
                 <button>
-                    <Link to="/">
+                    <Link to={`/bookpage/${book.id}`}>
                         View
                     </Link>
                 </button>
